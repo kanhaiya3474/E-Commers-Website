@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login Form</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="form-container">
+        <h2>Login and Registration</h2>
+        <form class="login-form">
+          <div class="form-group">
+            <label for="login-email">Email</label>
+            <input type="email" id="login-email" name="login-email" required>
+          </div>
+          <div class="form-group">
+            <label for="login-password">Password</label>
+            <input type="password" id="login-password" name="login-password" required>
+          </div>
+          <div class="form-group">
+            <button type="submit">Login</button>
+          </div>
+          <div class="form-group forgot-password">
+            <button type="button" id="forgot-password-btn">Forgot Password?</button>
+          </div>
+          <div class="form-group switch-form">
+            <button type="button" id="switch-to-registration-btn">Switch to Registration</button>
+          </div>
+        </form>
+    
+        <form class="registration-form">
+          <div class="form-group">
+            <label for="registration-email">Email</label>
+            <input type="email" id="registration-email" name="registration-email" required>
+          </div>
+          <div class="form-group">
+            <label for="registration-password">Password</label>
+            <input type="password" id="registration-password" name="registration-password" required>
+          </div>
+          <div class="form-group">
+            <button type="submit">Register</button>
+          </div>
+          <div class="form-group switch-form">
+            <button type="button" id="switch-to-login-btn">Switch to Login</button>
+          </div>
+        </form>
+      </div>
+    
+      <script>
+        document.addEventListener("DOMContentLoaded", function () {
+          const loginForm = document.querySelector(".login-form");
+          const registrationForm = document.querySelector(".registration-form");
+          const switchToRegistrationBtn = document.getElementById("switch-to-registration-btn");
+          const switchToLoginBtn = document.getElementById("switch-to-login-btn");
+          const forgotPasswordBtn = document.getElementById("forgot-password-btn");
+    
+          switchToRegistrationBtn.addEventListener("click", function () {
+            loginForm.style.display = "none";
+            registrationForm.style.display = "block";
+          });
+    
+          switchToLoginBtn.addEventListener("click", function () {
+            registrationForm.style.display = "none";
+            loginForm.style.display = "block";
+          });
+    
+          forgotPasswordBtn.addEventListener("click", function () {
+            alert("Implement the Forgot Password functionality here!");
+          });
+        });
+      </script>
+</body>
+</html>
