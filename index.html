@@ -1,0 +1,364 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Agriculture</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <style>
+        :root {
+            --pink: #f32a07;
+            --green: #28f608;
+            --navy: #333;
+            --light-gray: #f0f0f0;
+            --dark-gray: #333;
+        }
+
+        body {
+            margin: 0;
+            padding: 0;
+            background: url('background.jpg') no-repeat center center fixed;
+            background-size: cover;
+            height: 100vh;
+            font-family: 'Arial', sans-serif;
+            color: var(--dark-gray);
+        }
+
+        header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            background: #fff;
+            padding: 1rem 2%;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            z-index: 1000;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        }
+
+        header .logo {
+            font-size: 2rem;
+            color: var(--pink);
+            font-weight: bolder;
+            text-decoration: none;
+        }
+
+        header .navbar {
+            display: flex;
+            gap: 20px;
+        }
+
+        header .navbar a {
+            display: flex;
+            align-items: center;
+            text-decoration: none;
+        }
+
+        header .navbar img {
+            width: 30px;
+            height: 30px;
+            margin-right: 5px;
+        }
+
+        header .icons a {
+            font-size: 1.8rem;
+            color: var(--dark-gray);
+            margin-left: 1.5rem;
+            text-decoration: none;
+            transition: color 0.3s ease-in-out;
+        }
+
+        header .icons a:hover {
+            color: var(--pink);
+        }
+
+        .slider-container {
+            position: relative;
+            width: 100%;
+            height: 70vh;
+            overflow: hidden;
+            margin-top: 80px; /* Adjusted to leave space for the fixed navbar */
+        }
+
+        .slider-track {
+            display: flex;
+            width: 300%;
+            height: 100%;
+            transition: transform 0.5s ease-in-out;
+        }
+
+        .slider-item {
+            width: 100%;
+            height: 100%;
+            flex-shrink: 0;
+            object-fit: cover;
+        }
+
+        .centered {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            text-align: center;
+            color: #fff;
+        }
+
+        .centered h1 {
+            font-size: 3rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .centered p {
+            font-size: 1.5rem;
+        }
+
+        .slider-btn {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            cursor: pointer;
+            padding: 10px;
+            font-size: 20px;
+            color: #fff;
+            background: rgba(0, 0, 0, 0.3);
+            z-index: 1;
+            border: none;
+            outline: none;
+        }
+
+        .slider-btn--prev {
+            left: 10px;
+        }
+
+        .slider-btn--next {
+            right: 10px;
+        }
+
+        .contact {
+            background: var(--light-gray);
+            padding: 2rem 0;
+        }
+
+        .contact .heading {
+            text-align: center;
+            font-size: 4rem;
+            color: var(--navy);
+            margin-bottom: 2rem;
+            padding: 1rem;
+        }
+
+        .contact .row {
+            display: flex;
+            justify-content: space-around;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .contact form {
+            max-width: 500px;
+            width: 100%;
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+        }
+
+        .contact form .box {
+            width: 100%;
+            padding: 1rem;
+            font-size: 1rem;
+            margin-bottom: 1rem;
+        }
+
+        .contact form .btn {
+            width: 100%;
+            padding: 1rem;
+            background: var(--green);
+            color: #fff;
+            cursor: pointer;
+            font-size: 1.2rem;
+            border: none;
+            transition: background 0.3s ease-in-out;
+        }
+
+        .contact form .btn:hover {
+            background: var(--pink);
+        }
+
+        .contact .image {
+            max-width: 500px;
+            width: 100%;
+            overflow: hidden;
+            border-radius: 10px;
+        }
+
+        .contact .image img {
+            width: 100%;
+            height: auto;
+            object-fit: cover;
+            border-radius: 10px;
+        }
+
+        .footer {
+            background: var(--navy);
+            color: #fff;
+            padding: 4rem 0;
+        }
+
+        .footer .box-container {
+            display: flex;
+            justify-content: space-around;
+            align-items: flex-start;
+            flex-wrap: wrap;
+            max-width: 1200px;
+            margin: 0 auto;
+            gap: 2rem;
+        }
+
+        .footer .box {
+            flex: 1;
+            max-width: 250px;
+        }
+
+        .footer .box h3 {
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .footer .box a {
+            display: block;
+            color: #fff;
+            margin-bottom: 0.5rem;
+            text-decoration: none;
+            font-size: 1rem;
+        }
+
+        .footer .creadit {
+            text-align: center;
+            margin-top: 2rem;
+        }
+
+        .footer .creadit span {
+            font-weight: bold;
+        }
+    </style>
+</head>
+
+<body>
+    <header>
+        <input type="checkbox" name="" id="toggler">
+        <label for="toggler" class="fas fa-bars"></label>
+        <a href="#" class="logo">AgriMate<span>.</span></a>
+
+        <nav class="navbar">
+            <a href="vegetable/vegetable.html"><img src="vegetable.png" alt="Vegetable"> Vegetable</a>
+            <a href="Flower/Flower.html"><img src="flowers.png" alt="Flower"> Flower</a>
+            <a href="Fruit/fuit.html"><img src="fruit.png" alt="Fruit"> Fruit</a>
+            <a href="Seed/Seed.html"><img src="seed.png" alt="Seed"> Seed</a>
+            <a href="Vechile/vechile.html"><img src="vehicle.png" alt="Vehicle"> Vehicle</a>
+            <a href="#Contact"><img src="contact.png" alt="Contact"> Contact</a>
+        </nav>
+
+        <div class="icons">
+            <a href="#" class="fas fa-heart"></a>
+            <a href="#" class="fas fa-shopping-cart"></a>
+            <a href="Login/Login.html" class="fas fa-user"></a>
+        </div>
+    </header>
+
+    <div class="slider-container">
+        <div class="slider-track" id="sliderTrack">
+            <img class="slider-item" src="image1.jpg" alt="Image 1">
+            <div class="centered">
+                <h1>AgriMate</h1>
+                <p>Welcome To Agricultural</p>
+            </div>
+            <img class="slider-item" src="image2.jpg" alt="Image 2">
+            <img class="slider-item" src="image3.jpg" alt="Image 3">
+        </div>
+        <button class="slider-btn slider-btn--prev" onclick="moveSlider(-1)">❮</button>
+        <button class="slider-btn slider-btn--next" onclick="moveSlider(1)">❯</button>
+    </div>
+
+    <section class="contact" id="contact">
+        <h1 class="heading"><span>Contact</span> Us</h1>
+        <div class="row">
+            <form action="">
+                <input type="text" placeholder="Name" class="box">
+                <input type="text" placeholder="Email" class="box">
+                <input type="text" placeholder="Number" class="box">
+                <textarea name="" class="box" placeholder="Message" id="" cols="30" rows="10"></textarea>
+                <input type="submit" value="Send Message" class="btn">
+            </form>
+            <div class="image">
+                <img src="image 2/vege garden.jpeg" alt="">
+            </div>
+        </div>
+    </section>
+
+    <section class="footer">
+        <div class="box-container">
+            <div class="box">
+                <h3>Quick Links</h3>
+                <a href="#">Home</a>
+                <a href="#">About</a>
+                <a href="#">Products</a>
+                <a href="#">Review</a>
+                <a href="#">Contact</a>
+            </div>
+
+            <div class="box">
+                <h3>Extra Links</h3>
+                <a href="#">My Account</a>
+                <a href="#">My Order</a>
+                <a href="#">My Favourites</a>
+            </div>
+
+            <div class="box">
+                <h3>Location</h3>
+                <a href="#">India</a>
+                <a href="#">USA</a>
+                <a href="#">Japan</a>
+                <a href="#">France</a>
+                <a href="#">America</a>
+            </div>
+
+            <div class="box">
+                <h3>Contact Info</h3>
+                <a href="#">+91 9128347434</a>
+                <a href="#">kanhaiyakg3474@gmail.</a>
+                <a href="#">Bihar, India - 841236</a>
+                <img src="images/all cards.jpg" alt="">
+            </div>
+        </div>
+        <div class="creadit">Created by <span>Kanhaiya Gupta</span></div>
+    </section>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            const sliderTrack = document.getElementById("sliderTrack");
+            let slideIndex = 0;
+
+            function moveSlider(offset) {
+                slideIndex += offset;
+
+                const sliderItems = document.querySelectorAll(".slider-item");
+                slideIndex = Math.max(0, Math.min(sliderItems.length - 1, slideIndex));
+                const translateValue = -slideIndex * 100;
+                sliderTrack.style.transform = `translateX(${translateValue}%)`;
+            }
+
+            document.querySelector(".slider-btn--prev").addEventListener("click", () => moveSlider(-1));
+            document.querySelector(".slider-btn--next").addEventListener("click", () => moveSlider(1));
+        });
+    </script>
+</body>
+
+</html>
